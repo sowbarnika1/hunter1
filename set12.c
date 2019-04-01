@@ -1,24 +1,28 @@
 #include<stdio.h>
 int main()
 {
-    int n,a[100000],i,j,t,sum=0;
+    int n,a[100000],i,j,t,p,sum=0,max;
     scanf("%d",&n);
     for(i=0;i<n;i++)
     {
         scanf("%d",&a[i]);
     }
+    t=n;
+    while(t>0)
+    {
+    max=a[t];
     for(i=0;i<n;i++)
     {
-        for(j=i+1;j<n;j++)
+        if(max<=a[i])
         {
-            if(a[i]<a[j])
-            {
-                t=a[i];
-                a[i]=a[j];
-                a[j]=t;
-            }
+            max=a[i];
+            p=i;
         }
-        sum=sum*10+a[i];
+    }
+    printf("%d ",max);
+    sum=sum*10+max;
+    a[p]=0;
+    t--;
     }
     printf("%d",sum);
     return 0;
