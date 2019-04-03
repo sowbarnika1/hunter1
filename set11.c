@@ -1,7 +1,7 @@
 #include<stdio.h>
 int main()
 {
-    int n,a[100000],i,j,f=0,c=0;
+    int n,a[100000],i,j,k=0,c=0,b[100],t,f=0;
     scanf("%d",&n);
     for(i=0;i<n;i++)
     {
@@ -9,25 +9,42 @@ int main()
     }
     for(i=0;i<n;i++)
     {
-        c=0;
+        f=0;
         for(j=i+1;j<n;j++)
         {
             if(a[i]==a[j])
             {
-                a[j]='\0';
+               a[j]='\0';
                 c++;
+                f++;
+                
             }
         }
-        if(c>0)
+        if(f>0)
         {
-         if(a[i]!='\0')
+            if(a[i]!='\0')
                 {
-                printf("%d ",a[i]);
-                }
-                f++;   
+                 b[k]=a[i];
+                k++;
+               }
         }
+        
     }
-    if(f==0)
+    for(i=0;i<k;i++)
+    {
+        for(j=i+1;j<k;j++)
+        {
+            if(b[i]>b[j])
+            {
+            t=b[i];
+            b[i]=b[j];
+            b[j]=t;
+            }
+        }
+        printf("%d ",b[i]);
+    }
+    
+    if(c==0)
     {
         printf("unique");
     }
